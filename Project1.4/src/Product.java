@@ -1,5 +1,5 @@
 public class Product {
-    private int price;
+    private final int price;
     public int id;
 
     public Product(int price, int id) {
@@ -9,17 +9,19 @@ public class Product {
 
     @Override
     public boolean equals(Object obj) {
+        if(this == obj) return true;
+        if (obj == null || getClass() != obj.getClass()) return false;
         var product = (Product) obj;
         return product.id == this.id && product.price == this.price;
     }
 
     @Override
     public int hashCode() {
-       return this.price *37;
+       return 31 * id + price;
     }
 
     @Override
     public String toString() {
-        return "Product with id: " + this.id;
+        return "Product with id: " + id + " and price: " + price;
     }
 }
