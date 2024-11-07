@@ -1,4 +1,4 @@
-public class Product  implements Comparable<Product>{
+public class Product implements Comparable<Product>{
         private final int price;
         private final String name;
 
@@ -9,14 +9,17 @@ public class Product  implements Comparable<Product>{
         public Integer getPrice(){
             return price;
         }
+
+    public String getName(){
+        return name;
+    }
         public String toString(){
             return this.price + " " + this.name;
         }
 
 
-    @Override
     public int compareTo(Product otherProduct) {
-        return Integer.compare(getPrice(), otherProduct.getPrice());
+            return Integer.compare(getPrice(), otherProduct.getPrice());
     }
 }
 
