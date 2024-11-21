@@ -17,15 +17,15 @@ public class Main {
         cars.sort(new CarComparator());
 
         System.out.println("Sorting by label and model:");
-        for (Car car : cars) {
-            System.out.println(car.getLabel() + " " + car.getModel() + " " + car.getYear());
+        for (Car vehicle : cars) {
+            System.out.println(vehicle);
         }
 
         cars.sort(new CarComparatorYear());
 
-        System.out.println("Sorting by year");
-        for (Car car : cars) {
-            System.out.println(car.getLabel() + " " + car.getModel() + " " + car.getYear());
+        System.out.println("Sorting by year:");
+        for (Car vehicle : cars) {
+            System.out.println(vehicle);
         }
     }
 }

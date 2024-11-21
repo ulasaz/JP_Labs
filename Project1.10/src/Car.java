@@ -19,4 +19,9 @@ public class Car {
     public int getYear() {
         return year;
     }
+
+    @Override
+    public String toString() {
+        return label + " " + model + " " + year;
+    }
 }

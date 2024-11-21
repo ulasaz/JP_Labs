@@ -9,14 +9,12 @@ public class Product implements Comparable<Product>{
         public Integer getPrice(){
             return price;
         }
-
-    public String getName(){
+        public String getName(){
         return name;
     }
         public String toString(){
-            return this.price + " " + this.name;
+            return price + " " + name;
         }
-
 
     public int compareTo(Product otherProduct) {
             return Integer.compare(getPrice(), otherProduct.getPrice());
