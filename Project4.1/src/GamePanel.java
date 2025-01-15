@@ -57,6 +57,7 @@ public class GamePanel extends JPanel {
         System.out.println("GamePanel initialized. Threads started.");
     }
 
+
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
@@ -79,7 +80,6 @@ public class GamePanel extends JPanel {
             obstacle.draw(g2);
         }
 
-        // Отображение счёта
         drawScore(g2);
 
         g2.dispose();
@@ -89,7 +89,7 @@ public class GamePanel extends JPanel {
         g2.setColor(Color.WHITE);
         g2.setFont(new Font("Arial", Font.BOLD, 20));
         String scoreText = "Score: " + score;
-        g2.drawString(scoreText, 20, 40); // Отображение счёта в верхнем левом углу
+        g2.drawString(scoreText, 20, 40);
     }
 
     public void updateScore(int score) {
@@ -101,10 +101,10 @@ public class GamePanel extends JPanel {
         return this.score;
     }
     public void restartGame() {
-        if (parentWindow != null) { // Проверяем, что ссылка на окно не null
-            parentWindow.dispose(); // Закрываем окно
+        if (parentWindow != null) {
+            parentWindow.dispose();
         }
-        new Game(); // Создаём новое окно игры
+        new Game();
     }
 
 }

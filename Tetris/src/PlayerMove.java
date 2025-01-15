@@ -1,17 +1,17 @@
 public class PlayerMove implements Runnable{
-    private final GamePanel gp;
+    private final ApplicationPanel ap;
     private final Player player;
 
-    public PlayerMove(GamePanel gp, Player player) {
-        this.gp = gp;
+    public PlayerMove(ApplicationPanel ap, Player player) {
+        this.ap = ap;
         this.player = player;
     }
 
     @Override
     public void run() {
-        while (!gp.isGameOver) {
+        while (!ap.isGameOver) {
             player.update();
-            gp.repaint();
+            ap.repaint();
             try {
                 Thread.sleep(16);
             } catch (InterruptedException e) {

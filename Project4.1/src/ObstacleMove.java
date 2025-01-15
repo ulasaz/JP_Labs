@@ -20,16 +20,17 @@ public class ObstacleMove implements Runnable {
         while (true) {
             if (!gp.isGamePaused) {
                 for (Obstacle obstacle : obstacles) {
-                    obstacle.update(); // Обновляем положение препятствий
-                    obstacle.checkCollision(); // Проверяем столкновения с игроком
+                    obstacle.update();
+
+                    obstacle.checkCollision();
                 }
-                gp.repaint(); // Перерисовываем экран
+                gp.repaint();
             }
 
             try {
-                Thread.sleep(16); // Ожидание для поддержания ~60 FPS
+                Thread.sleep(16);
             } catch (InterruptedException e) {
-                break; // Прерываем цикл, если поток был прерван
+                break;
             }
         }
     }

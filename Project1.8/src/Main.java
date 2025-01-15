@@ -4,7 +4,6 @@ import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
-        ProductComparator productComparator = new ProductComparator();
         List<Product> products = new ArrayList<>();
 
         var product1 = new Product(20, "Airpods Max");
@@ -21,11 +20,18 @@ public class Main {
         products.add(product5);
         products.add(product6);
 
-        System.out.println("Before Sorting : " + products);
-        Collections.sort(products);
-        System.out.println("After Sorting by price : " + products);
-        products.sort(productComparator);
-        System.out.println("After Sorting by name: " + products);
+        sortAndPrintByPrice(products);
+        sortAndPrintByName(products);
 
+
+    }
+    private static void sortAndPrintByPrice(List<Product> products) {
+        Collections.sort(products); // Использует compareTo из Product
+        System.out.println("After Sorting by price: " + products);
+    }
+
+    private static void sortAndPrintByName(List<Product> products) {
+        products.sort(new ProductComparator()); // Использует компаратор
+        System.out.println("After Sorting by name: " + products);
     }
 }

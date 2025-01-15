@@ -17,7 +17,7 @@ public class Apple {
     int x = 100;
     int y = 300;
     public BufferedImage onPlace;
-    public int score = 0; // Счетчик рекорда
+    public int score = 0;
 
     public Apple(GamePanel gp, Player player) {
         this.gp = gp;
@@ -38,12 +38,10 @@ public class Apple {
         eaten = false;
         Random rand = new Random();
 
-        // Ширина игрового поля (адаптируйте границы при необходимости)
         x = rand.nextInt(gp.screenWidth - gp.tileSize);
 
-        // Высота игрового поля (яблоко появляется в пределах досягаемости прыжка игрока)
-        int minY = player.ground - player.jumpHeight; // Минимальная высота, до которой игрок достаёт
-        int maxY = player.ground;                     // Максимальная высота (уровень земли)
+        int minY = player.ground - player.jumpHeight;
+        int maxY = player.ground;
         y = minY + rand.nextInt(maxY - minY + 1);
     }
 

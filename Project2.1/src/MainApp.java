@@ -4,6 +4,8 @@ import java.awt.*;
 
 public class MainApp {
     public static void main(String[] args) {
+
+
         JFrame frame = new JFrame("My App");
 
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

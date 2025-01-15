@@ -46,29 +46,29 @@ public class Player extends Entity {
             direction = "left";
             x -= speed;
             if (x < 0) {
-                x = 0; // Ограничение слева
+                x = 0;
             }
         }
         if (keyH.rightPressed) {
             direction = "right";
-            if (x + speed <= 750) { // Проверка: не превышает ли x границу 200
-                x += speed; // Если не превышает, то продолжаем движение
+            if (x + speed <= 750) {
+                x += speed;
             } else {
-                x = 750; // Если x уже больше 200, фиксируем его на границе
+                x = 750;
             }
         }
 
 
         if (keyH.upPressed && !isJumping && y == ground) {
             direction = "up";
-            isJumping = true; // Устанавливаем флаг прыжка
+            isJumping = true;
         }
 
         if (isJumping) {
-            if (y > ground - jumpHeight) { // Поднимаемся, пока не достигнем максимальной высоты
+            if (y > ground - jumpHeight) {
                 y -= jumpSpeed;
             } else {
-                isJumping = false; // Завершаем прыжок
+                isJumping = false;
             }
         }
 
@@ -83,7 +83,7 @@ public class Player extends Entity {
 
 
         spriteCounter++;
-        if (spriteCounter >= 10) { // Change every 10 updates
+        if (spriteCounter >= 10) { 
             if (spriteNum == 1) {
                 spriteNum = 2;
             } else if (spriteNum == 2) {

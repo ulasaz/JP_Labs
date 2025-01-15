@@ -69,9 +69,9 @@ public class Obstacle {
             );
 
             if (response == JOptionPane.YES_OPTION) {
-                gp.restartGame(); // Вызов метода для перезапуска игры
+                gp.restartGame();
             } else {
-                System.exit(0); // Полностью закрываем игру
+                System.exit(0);
             }
             }
 

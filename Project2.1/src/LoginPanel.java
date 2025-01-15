@@ -48,40 +48,41 @@ public class LoginPanel extends JPanel implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        String loginText = textField.getText();
-        String passwordText = new String(passwordField.getPassword());
-        textArea.setText("Login: " + loginText + "\nPassword: " + passwordText);
-        checkIfPasswordIsStrong();
+        char[] passwordChars = passwordField.getPassword();
+        try {
+            String loginText = textField.getText().trim();
+            textArea.setText("Login: " + loginText + "\nPassword: " + String.valueOf(passwordChars));
+            if (checkIfPasswordIsStrong(passwordChars)) {
+                JOptionPane.showMessageDialog(this,
+                        "Hi, " + loginText + "!\nYour password is strong!",
+                        "Password Strength", JOptionPane.INFORMATION_MESSAGE);
+            } else {
+                JOptionPane.showMessageDialog(this,
+                        "Hi, " + loginText + "!\nYour password is weak! It should contain at least 8 characters, including:\n" +
+                                "- Lowercase letters\n" +
+                                "- Uppercase letters\n" +
+                                "- Numbers\n" +
+                                "- Special characters (!, @, #, etc.)",
+                        "Password Strength", JOptionPane.WARNING_MESSAGE);
+            }
+        } finally {
+            Arrays.fill(passwordChars, '\0');
+        }
     }
-    public void checkIfPasswordIsStrong() {
-        String loginText = textField.getText().trim();
-        String passwordText = new String(passwordField.getPassword());
-        int n = passwordText.length();
+
+    private boolean checkIfPasswordIsStrong(char[] passwordChars) {
+        int n = passwordChars.length;
         boolean hasLower = false, hasUpper = false, hasDigit = false, specialChar = false;
-        Set<Character> set = new HashSet<>(
-                Arrays.asList('!', '@', '#', '$', '%', '^', '&', '*', '(', ')', '-', '+'));
-        for (char i : passwordText.toCharArray()) {
-            if (Character.isLowerCase(i)) hasLower = true;
-            if (Character.isUpperCase(i)) hasUpper = true;
-            if (Character.isDigit(i)) hasDigit = true;
-            if (set.contains(i)) specialChar = true;
+        Set<Character> specialSet = new HashSet<>(Arrays.asList('!', '@', '#', '$', '%', '^', '&', '*', '(', ')', '-', '+'));
+
+        for (char c : passwordChars) {
+            if (Character.isLowerCase(c)) hasLower = true;
+            if (Character.isUpperCase(c)) hasUpper = true;
+            if (Character.isDigit(c)) hasDigit = true;
+            if (specialSet.contains(c)) specialChar = true;
         }
-        if (n >= 8 && hasLower && hasUpper && hasDigit && specialChar) {
-            JOptionPane.showMessageDialog(this, "Hi, " + loginText + "!\nYour password is strong!", "Password Strength", JOptionPane.INFORMATION_MESSAGE);
-        } else {
-            String message = String.format("""
-                    Hi, %s!
-                    Your password is weak!
-                    It should contain at least 8 characters, including:
-                    - Lowercase letters
-                    - Uppercase letters
-                    - Numbers
-                    - Special characters (!, @, #, etc.)
-                    """, loginText);
-            JOptionPane.showMessageDialog(this,
-                    message,
-                    "Password Strength",
-                    JOptionPane.WARNING_MESSAGE);
-        }
+
+        return n >= 8 && hasLower && hasUpper && hasDigit && specialChar;
     }
+
 }

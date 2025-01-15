@@ -10,21 +10,21 @@ public class AppleMove implements Runnable {
     @Override
     public void run() {
         while (true) {
-            apple.checkCollision(); // Проверка столкновения
+            apple.checkCollision();
 
-            if (apple.eaten) { // Если яблоко съедено
+            if (apple.eaten) {
                 try {
-                    Thread.sleep(2000); // Ожидаем 2 секунды
+                    Thread.sleep(2000);
                 } catch (InterruptedException e) {
                     break;
                 }
-                apple.update();      // Обновляем позицию яблока
-                apple.eaten = false; // Сбрасываем состояние съеденности
-                gp.repaint();        // Перерисовываем экран
+                apple.update();
+                apple.eaten = false;
+                gp.repaint();
             }
 
             try {
-                Thread.sleep(50); // Маленькая пауза, чтобы снизить нагрузку на CPU
+                Thread.sleep(50);
             } catch (InterruptedException e) {
                 break;
             }
