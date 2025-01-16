@@ -29,7 +29,6 @@ public class ApplicationPanel extends JPanel {
         super.paintComponent(g);
         Graphics2D g2 = (Graphics2D) g;
 
-        // Рисуем все фигуры
         for (Figure figure : figures) {
             figure.draw(g2);
         }

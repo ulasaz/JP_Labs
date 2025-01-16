@@ -1,16 +1,16 @@
-public class PlayerMove implements Runnable{
+public class FigureMove implements Runnable{
     private final ApplicationPanel ap;
-    private final Player player;
+    private final Figure figure;
 
-    public PlayerMove(ApplicationPanel ap, Player player) {
+    public FigureMove(ApplicationPanel ap, Figure figure) {
         this.ap = ap;
-        this.player = player;
+        this.figure = figure;
     }
 
     @Override
     public void run() {
         while (!ap.isGameOver) {
-            player.update();
+            figure.update();
             ap.repaint();
             try {
                 Thread.sleep(16);
