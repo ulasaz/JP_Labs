@@ -86,3 +86,6 @@ public class Figure {
         g2.fillRect(x, y, width, height);
     }
 }
+
+
+
